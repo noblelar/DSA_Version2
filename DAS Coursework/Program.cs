@@ -1,6 +1,5 @@
 ﻿namespace DAS_Coursework;
 using controller;
-using utils;
 
 class Program
 {
