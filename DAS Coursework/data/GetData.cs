@@ -42,7 +42,23 @@ namespace DAS_Coursework.data
 
         public static List<string> GetLines() => GetColumnData(0);
 
-        public static List<string> GetUniqueLines() => GetLines().Distinct().ToList();
+      
+        public static List<string> GetUniqueLines()
+        {
+            var allLines = GetLines();
+
+            List<string> lines = new List<string>();
+
+            foreach (var line in allLines)
+            {
+                if (!lines.Contains(line.Trim()))
+                {
+                    lines.Add(line.Trim());
+                }
+            }
+
+            return lines;
+        }
 
         public static List<double> GetEdgeTime()
         {
@@ -76,14 +92,14 @@ namespace DAS_Coursework.data
                 while (reader.Read()) // Read each row of data
                 {
                     string line = GetExcelStringData(reader, 0);
-                    string direction = GetExcelStringData(reader,1);
-                    string stationA = GetExcelStringData(reader,2);
-                    string stationB = GetExcelStringData(reader,3);
-                    double amPeakTime = GetExcelDoubleData(reader,6);
+                    string direction = GetExcelStringData(reader, 1);
+                    string stationA = GetExcelStringData(reader, 2);
+                    string stationB = GetExcelStringData(reader, 3);
+                    double amPeakTime = GetExcelDoubleData(reader, 6);
                     double interPeakTime = GetExcelDoubleData(reader, 7);
-                    double umimpededTime= GetExcelDoubleData(reader, 5);
+                    double umimpededTime = GetExcelDoubleData(reader, 5);
 
-                   
+
 
                     data.Add(new TrainData(line, direction, stationA, stationB, amPeakTime, interPeakTime, umimpededTime));
                 }
