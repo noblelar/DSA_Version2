@@ -5,10 +5,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        MainController.Init();
-
-        MainController.GetMainMain();
-
+        var summary = BenchmarkRunner.Run<DijkstraBenchmark>(new CustomConfig());
     }
 
 }
