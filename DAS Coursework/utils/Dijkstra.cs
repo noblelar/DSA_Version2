@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using DAS_Coursework.models;
 
 namespace DAS_Coursework.utils
@@ -8,6 +9,9 @@ namespace DAS_Coursework.utils
     {
         public static void ShortestPath(TrainSystem graph, Verticex source, Verticex destination)
         {
+            // Start the stopwatch to measure the execution time
+            Stopwatch stopwatch = Stopwatch.StartNew();
+
             PriorityQueue pq = new PriorityQueue();
             Dictionary<Verticex, double> distances = new Dictionary<Verticex, double>();
             Dictionary<Verticex, Verticex> predecessors = new Dictionary<Verticex, Verticex>();
@@ -98,6 +102,9 @@ namespace DAS_Coursework.utils
             }
             Console.WriteLine($"\n({path.Count + 1}) End: {destination.Name}, {endLine} ({endDir})");
             Console.WriteLine($"\nTotal Time: {distances[destination]} minutes");
+
+            stopwatch.Stop();
+            Console.WriteLine($"\nElapsed Time: {stopwatch.ElapsedMilliseconds} ms");
         }
     }
 }
