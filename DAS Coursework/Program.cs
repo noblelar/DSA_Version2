@@ -8,7 +8,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        var summary = BenchmarkRunner.Run<DijkstraBenchmark>(new CustomConfig());
+        MainController.Init();
+
+        MainController.GetMainMain();
+
     }
 
 }
